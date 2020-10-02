@@ -1,0 +1,27 @@
+@import "./variables";
+@mixin diagLine {
+  background: linear-gradient(45deg, #ffffff 49%, #aaa 50%, #ffffff 51%);
+}
+
+@mixin circle {
+  border-radius: 50%;
+}
+
+@mixin ticket {
+  height: 520px;
+  width: 340px;
+  display: flex;
+  flex-direction: column;
+  background: $c3;
+  font-family: $f2;
+  @include borderRad();
+}
+
+@mixin borderRad {
+  border-radius: 30px;
+}
+
+@mixin borderRadBottom {
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}

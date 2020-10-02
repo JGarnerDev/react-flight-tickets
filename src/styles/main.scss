@@ -1,0 +1,116 @@
+@import "./variables";
+@import "./mixins";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root,
+#App {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+#App {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  @media (max-width: 900px) {
+    flex-direction: column;
+
+    height: 200vh;
+  }
+}
+
+.ticket {
+  @include ticket;
+
+  &-top {
+    height: 50%;
+    padding: 15px 25px 0px 25px;
+    .ticket-banner {
+      display: flex;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .flight-info {
+      display: flex;
+      flex-direction: column;
+      font-size: 12px;
+      p {
+        flex-grow: 1;
+        min-width: 50%;
+        height: 40px;
+        padding: 2px 0px;
+      }
+      hr {
+        border: $c4 1px solid;
+        margin-top: 5px;
+      }
+
+      label {
+        color: $c4;
+      }
+      .info-wrapper {
+        height: 100%;
+
+        .info-row {
+          flex-grow: 1;
+          display: flex;
+          p {
+            hr {
+              width: 90%;
+            }
+          }
+        }
+        .info-row p:last-child {
+          hr {
+            width: 100%;
+          }
+        }
+      }
+    }
+    .flight-form {
+      padding-top: 35px;
+    }
+  }
+  &-bottom {
+    height: 50%;
+    padding: 15px 25px 15px 25px;
+    @include borderRadBottom;
+  }
+  &.Alpha {
+    p,
+    h1 {
+      color: $c1;
+    }
+    .ticket-top {
+      h1 {
+        font-family: $f1;
+      }
+    }
+
+    .ticket-bottom {
+      background: $c1;
+    }
+  }
+  &.OMEGA {
+    p,
+    h1 {
+      color: $c2;
+    }
+    .ticket-top {
+      h1 {
+        font-family: $f3;
+      }
+    }
+
+    .ticket-bottom {
+      background: $c2;
+    }
+  }
+}
