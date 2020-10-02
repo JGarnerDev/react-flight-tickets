@@ -1,5 +1,7 @@
 import React from "react";
 import "./styles/main.scss";
+import qrAlpha from "./assets/qr-Alpha.jpg";
+import qrOmega from "./assets/qr-OMEGA.jpg";
 
 const ticketStyles = ["Alpha", "OMEGA"];
 
@@ -30,6 +32,11 @@ const ticketInfo = {
     "MCO",
     "Orlando, FL",
   ],
+};
+
+const qr = {
+  Alpha: qrAlpha,
+  OMEGA: qrOmega,
 };
 
 function renderTickets() {
@@ -97,11 +104,17 @@ function renderTickets() {
                 <p>{ticketInfo[ticketStyle][10]}</p>
               </div>
             </div>
-            <div className="btn-wrapper"></div>
+            <div className="btn-wrapper">
+              <button className="info-button">?</button>
+            </div>
           </div>
           <div className="bottom-col">
-            <div className="info-wrapper"></div>
-            <div className="btn-wrapper"></div>
+            <div className="info-wrapper">
+              <img src={qr[ticketStyle]} alt="" className="qr" />
+            </div>
+            <div className="btn-wrapper">
+              <button className="purchase-button">Add to wallet</button>
+            </div>
           </div>
         </div>
       </div>

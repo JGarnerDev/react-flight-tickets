@@ -105,7 +105,7 @@ h2 {
   &-bottom {
     display: flex;
     height: 50%;
-    padding: 25px 25px 15px 25px;
+    padding: 25px 20px 15px 20px;
     @include borderRadBottom;
     color: white;
 
@@ -125,6 +125,7 @@ h2 {
         justify-content: space-between;
         align-items: center;
         height: 60%;
+
         .down-arrow {
           height: 28px;
           width: 26px;
@@ -147,11 +148,13 @@ h2 {
           width: 10px;
 
           &.left {
-            transform: translate(-70px);
+            transform: translate(-62px);
             background: $c5;
+            height: 12px;
+            width: 12px;
           }
           &.bottom-left {
-            transform: translate(-70px, 65px);
+            transform: translate(-62px, 65px);
             outline: 1px solid white;
             &:after {
               content: "";
@@ -180,18 +183,41 @@ h2 {
           height: 2px;
           width: 10px;
           background: $c3;
-          transform: translate(-70px, 50px);
+          transform: translate(-62px, 50px);
+        }
+        .qr {
+          margin-top: 10%;
+          width: 80%;
         }
       }
       .btn-wrapper {
         height: 20%;
+        .info-button {
+          background: transparent;
+          height: 40px;
+          width: 40px;
+          float: left;
+          border-radius: 50%;
+          border: 2px solid white;
+          color: white;
+        }
+        .purchase-button {
+          background: transparent;
+          height: 40px;
+          width: 100%;
+          float: left;
+          background: $c5;
+          border: none;
+          border-radius: 20px;
+          font-family: $f1;
+        }
       }
     }
     .bottom-col:first-child {
       margin-right: 10px;
     }
     .bottom-col:last-child .info-wrapper {
-      background: white;
+      background: $c3;
     }
   }
 
@@ -220,6 +246,9 @@ h2 {
     .down-arrow::after {
       background: $c1;
     }
+    .purchase-button {
+      color: $c1;
+    }
   }
 
   &.OMEGA {
@@ -237,6 +266,13 @@ h2 {
       background: $c2;
       p {
         color: white;
+      }
+      .square.left {
+        background: $c4;
+      }
+      .purchase-button {
+        background: $c3;
+        color: $c2;
       }
     }
     .dot {
