@@ -111,6 +111,7 @@ h2 {
 
     p {
       font-size: 0.7em;
+      letter-spacing: 1px;
     }
     .bottom-col {
       display: flex;
@@ -173,6 +174,13 @@ h2 {
               transform-origin: -2px -6px;
             }
           }
+        }
+        .line {
+          position: absolute;
+          height: 2px;
+          width: 10px;
+          background: $c3;
+          transform: translate(-70px, 50px);
         }
       }
       .btn-wrapper {

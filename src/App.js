@@ -85,6 +85,7 @@ function renderTickets() {
               <div className="square left" />
               <div className="square bottom-left" />
               <div className="square right" />
+              <div className="line" />
               <div>
                 <h2>{ticketInfo[ticketStyle][7]}</h2>
                 <p>{ticketInfo[ticketStyle][8]}</p>
