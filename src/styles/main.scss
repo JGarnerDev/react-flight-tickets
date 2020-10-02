@@ -10,18 +10,26 @@ html,
 body,
 #root,
 #App {
-  height: 100%;
+  height: auto;
   width: 100%;
   overflow-x: hidden;
+}
+
+h2 {
+  font-weight: lighter;
+  font-size: 2em;
+  line-height: 0.8em;
+  letter-spacing: 1px;
 }
 
 #App {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  margin-top: 120px;
   @media (max-width: 900px) {
     flex-direction: column;
-
+    margin-top: 0px;
     height: 200vh;
   }
 }
@@ -55,21 +63,37 @@ body,
       label {
         color: $c4;
       }
-      .info-wrapper {
-        height: 100%;
+      .dot {
+        position: absolute;
+        transform: translate(280px, 3px);
 
-        .info-row {
-          flex-grow: 1;
+        width: 12px;
+        height: 12px;
+
+        border-radius: 50%;
+      }
+      .info-wrapper {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        .info-columns {
           display: flex;
-          p {
-            hr {
-              width: 90%;
-            }
+          height: 80px;
+          width: 100%;
+          .col {
+            width: 50%;
           }
-        }
-        .info-row p:last-child {
-          hr {
-            width: 100%;
+          .col:first-child {
+            margin-right: 10px;
+          }
+          .row {
+            display: flex;
+            justify-content: space-between;
+            p {
+              flex-grow: unset;
+              min-width: calc(50% - 5px);
+              width: 30px;
+            }
           }
         }
       }
@@ -79,10 +103,90 @@ body,
     }
   }
   &-bottom {
+    display: flex;
     height: 50%;
-    padding: 15px 25px 15px 25px;
+    padding: 25px 25px 15px 25px;
     @include borderRadBottom;
+    color: white;
+
+    p {
+      font-size: 0.7em;
+    }
+    .bottom-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 50%;
+      text-align: center;
+      .info-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        height: 60%;
+        .down-arrow {
+          height: 28px;
+          width: 26px;
+
+          clip-path: polygon(0% 0%, 100% 0, 100% 50%, 50% 100%, 0 50%);
+          background: $c3;
+          &::after {
+            content: "";
+            position: absolute;
+            margin-top: 2px;
+            margin-left: -11px;
+            height: calc(28px / 1.2);
+            width: calc(26px / 1.2);
+            clip-path: polygon(0% 0%, 100% 0, 100% 50%, 50% 100%, 0 50%);
+          }
+        }
+        .square {
+          position: absolute;
+          height: 10px;
+          width: 10px;
+
+          &.left {
+            transform: translate(-70px);
+            background: $c5;
+          }
+          &.bottom-left {
+            transform: translate(-70px, 65px);
+            outline: 1px solid white;
+            &:after {
+              content: "";
+              position: absolute;
+              border-top: 1px solid white;
+              width: 14px;
+              transform: rotate(45deg);
+              transform-origin: -2px -6px;
+            }
+          }
+          &.right {
+            transform: translate(65px);
+            outline: 1px solid white;
+            &:after {
+              content: "";
+              position: absolute;
+              border-top: 1px solid white;
+              width: 14px;
+              transform: rotate(45deg);
+              transform-origin: -2px -6px;
+            }
+          }
+        }
+      }
+      .btn-wrapper {
+        height: 20%;
+      }
+    }
+    .bottom-col:first-child {
+      margin-right: 10px;
+    }
+    .bottom-col:last-child .info-wrapper {
+      background: white;
+    }
   }
+
   &.Alpha {
     p,
     h1 {
@@ -96,8 +200,20 @@ body,
 
     .ticket-bottom {
       background: $c1;
+
+      color: $c3;
+      p {
+        color: $c3;
+      }
+    }
+    .dot {
+      background: $c5;
+    }
+    .down-arrow::after {
+      background: $c1;
     }
   }
+
   &.OMEGA {
     p,
     h1 {
@@ -110,6 +226,15 @@ body,
     }
 
     .ticket-bottom {
+      background: $c2;
+      p {
+        color: white;
+      }
+    }
+    .dot {
+      background: $c2;
+    }
+    .down-arrow::after {
       background: $c2;
     }
   }

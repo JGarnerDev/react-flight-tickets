@@ -41,42 +41,68 @@ function renderTickets() {
             <h1>{ticketStyle}</h1>
           </div>
           <div className="flight-info">
-            <p>{ticketInfo[ticketStyle][0]}</p>
+            <p>{ticketInfo[ticketStyle][0]} </p>
+            <div className={"dot " + ticketStyle}></div>
             <div className="info-wrapper">
               <p>
                 {ticketInfo[ticketStyle][1]} <hr />
                 <label>PASSENGER</label>
               </p>
-              <div className="info-row">
-                <p>
-                  {ticketInfo[ticketStyle][2]} <hr />
-                  <label>DEPATURE TIME</label>
-                </p>
-                <p>
-                  {ticketInfo[ticketStyle][3]} <hr />
-                  <label>GATE</label>
-                </p>
-              </div>
-              <div className="info-row">
-                <p>
-                  {ticketInfo[ticketStyle][4]} <hr />
-                  <label>CLASS</label>
-                </p>
-                <div className="info-row">
+              <div className="info-columns">
+                <div className="col">
                   <p>
-                    {ticketInfo[ticketStyle][5]} <hr />
-                    <label>ZONE</label>
+                    {ticketInfo[ticketStyle][2]} <hr />
+                    <label>BOARDING TIME</label>
                   </p>
                   <p>
-                    {ticketInfo[ticketStyle][6]} <hr />
-                    <label>SEAT</label>
+                    {ticketInfo[ticketStyle][4]} <hr />
+                    <label>CLASS</label>
                   </p>
+                </div>
+                <div className="col">
+                  <p>
+                    {ticketInfo[ticketStyle][3]} <hr />
+                    <label>GATE</label>
+                  </p>
+                  <div className="row">
+                    <p>
+                      {ticketInfo[ticketStyle][5]} <hr />
+                      <label>ZONE</label>
+                    </p>
+                    <p>
+                      {ticketInfo[ticketStyle][6]} <hr />
+                      <label>SEAT</label>
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="ticket-bottom"></div>
+        <div className="ticket-bottom">
+          <div className="bottom-col">
+            <div className="info-wrapper">
+              <div className="square left" />
+              <div className="square bottom-left" />
+              <div className="square right" />
+              <div>
+                <h2>{ticketInfo[ticketStyle][7]}</h2>
+                <p>{ticketInfo[ticketStyle][8]}</p>
+              </div>
+
+              <div className="down-arrow" />
+              <div>
+                <h2>{ticketInfo[ticketStyle][9]}</h2>
+                <p>{ticketInfo[ticketStyle][10]}</p>
+              </div>
+            </div>
+            <div className="btn-wrapper"></div>
+          </div>
+          <div className="bottom-col">
+            <div className="info-wrapper"></div>
+            <div className="btn-wrapper"></div>
+          </div>
+        </div>
       </div>
     );
   });
