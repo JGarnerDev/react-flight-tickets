@@ -23,6 +23,31 @@
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
 }
+@mixin Alpha-logo {
+  width: 22px;
+  height: 22px;
+  background: $c1;
+  border-radius: 50%;
+  &::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    margin-left: 1px;
+    border-bottom: 3px solid $c1;
+    z-index: 5;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 5px;
+    margin: 0px -1px;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-bottom: 20px solid $c3;
+  }
+}
 
 @mixin diagLine {
   content: "";
@@ -32,6 +57,15 @@
   width: 14px;
   transform: rotate(45deg);
   transform-origin: -2px -6px;
+}
+@mixin diagLineReverse {
+  content: "";
+  position: absolute;
+  // Size
+  border-top: 1px solid white;
+  width: 14px;
+  transform: rotate(-45deg);
+  transform-origin: 9px 12px;
 }
 
 @mixin downArrow {

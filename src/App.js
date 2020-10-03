@@ -40,11 +40,13 @@ const QRColors = {
 };
 
 function renderTickets() {
-  return ticketStyles.map((ticketStyle) => {
+  return ticketStyles.map((ticketStyle, i) => {
     return (
       <div className={"ticket " + ticketStyle}>
         <div className="ticket-top">
           <div className="ticket-banner">
+            {i === 0 ? <div id="Alpha-logo" /> : null}
+
             <h1>{ticketStyle}</h1>
           </div>
           <div className="flight-info">
