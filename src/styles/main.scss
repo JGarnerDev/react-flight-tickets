@@ -55,6 +55,10 @@ body,
       display: flex;
       align-items: center;
       margin-bottom: 12px;
+      h1 {
+        font-size: 1.6em;
+        font-weight: ligther;
+      }
     }
     // The Passenger / Flight details
     .flight-info {

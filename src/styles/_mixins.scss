@@ -24,17 +24,18 @@
   border-bottom-right-radius: 30px;
 }
 @mixin Alpha-logo {
-  width: 22px;
-  height: 22px;
+  position: relative;
+  top: -1px;
+  width: 18px;
+  height: 18px;
   background: $c1;
   border-radius: 50%;
   &::before {
     content: "";
     position: absolute;
-    width: 20px;
-    height: 20px;
-    margin-left: 1px;
-    border-bottom: 3px solid $c1;
+    width: 18px;
+    height: 18px;
+    border-bottom: 2px solid $c1;
     z-index: 5;
   }
   &::after {
@@ -42,7 +43,7 @@
     position: absolute;
     width: 0;
     height: 5px;
-    margin: 0px -1px;
+    margin: 0px -3px;
     border-left: 12px solid transparent;
     border-right: 12px solid transparent;
     border-bottom: 20px solid $c3;
