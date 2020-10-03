@@ -1,6 +1,8 @@
 @import "./variables";
 @import "./mixins";
 
+// Hey there! Colors and fonts are held in 'variables', whereas reusable and/or verbose style groupings are in 'mixins'
+
 // Setup
 html,
 body,
@@ -42,6 +44,7 @@ body,
     // Size
     height: 50%;
     padding: 15px 25px 0px 25px;
+
     // The section containing the company logo
     .ticket-banner {
       // Content orientation
@@ -54,7 +57,7 @@ body,
       // Content orientation
       display: flex;
       flex-direction: column;
-      font-size: 12px;
+
       // The Passenger / Flight details lettering
       p {
         // Size
@@ -118,6 +121,7 @@ body,
       }
     }
   }
+
   // The bottom half of a ticket
   &-bottom {
     // Content orientation
@@ -125,7 +129,9 @@ body,
     // Size
     height: 50%;
     padding: 25px 20px 15px 20px;
+    // Mixin for bottom curvature
     @include borderRadBottom;
+
     color: $c4;
     // Small font
     p {
@@ -286,6 +292,7 @@ body,
     }
   }
 
+  // The OMEGA (salmon?) ticket
   &.OMEGA {
     // The top half of the ticket
     .ticket-top {
@@ -329,6 +336,9 @@ body,
 
 // Media Queries
 @media (max-width: 900px) {
+  // When the screen is smaller than 900px, the tickets no longer have room to fit, therefor...
+
+  // Change the content orientation from horizontal to vertical, get rid of the margin, and increase the height to allow some space
   #App {
     // Content orientation
     flex-direction: column;

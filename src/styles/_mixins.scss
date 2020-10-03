@@ -1,15 +1,18 @@
 @import "./variables";
 
 @mixin ticket {
+  // Size
   height: 520px;
   width: 340px;
+  @include borderRad();
   // Content orientation
   display: flex;
   flex-direction: column;
 
   background: $c3;
-
-  @include borderRad();
+  p {
+    font-size: 12px;
+  }
 }
 
 @mixin borderRad {
@@ -24,6 +27,7 @@
 @mixin diagLine {
   content: "";
   position: absolute;
+  // Size
   border-top: 1px solid white;
   width: 14px;
   transform: rotate(45deg);
@@ -54,8 +58,9 @@
 
 @mixin line {
   position: absolute;
+  transform: translate(-62px, 50px);
+  // Size
   height: 2px;
   width: 10px;
   background: $c3;
-  transform: translate(-62px, 50px);
 }
