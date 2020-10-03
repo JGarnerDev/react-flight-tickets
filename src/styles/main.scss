@@ -1,96 +1,115 @@
 @import "./variables";
 @import "./mixins";
 
-* {
-  margin: 0;
-  padding: 0;
-}
-
+// Setup
 html,
 body,
 #root,
 #App {
+  // Size
   height: auto;
   width: 100%;
+  // Hide the overflow on the x axis
   overflow-x: hidden;
 }
 
-h2 {
-  font-weight: lighter;
-  font-size: 2em;
-  line-height: 0.8em;
-  letter-spacing: 1px;
+// Minimal reset
+
+* {
+  // Size
+  margin: 0;
+  padding: 0;
 }
 
+// General stylings
+
 #App {
+  // Content orientation
   display: flex;
   justify-content: space-around;
   align-items: center;
+  // Size
   margin-top: 120px;
-  @media (max-width: 900px) {
-    flex-direction: column;
-    margin-top: 0px;
-    height: 200vh;
-  }
+  // Font for small text
+  font-family: $f2;
 }
 
+// Ticket stylings for both
 .ticket {
   @include ticket;
-
+  // The top half of a ticket
   &-top {
+    // Size
     height: 50%;
     padding: 15px 25px 0px 25px;
+    // The section containing the company logo
     .ticket-banner {
+      // Content orientation
       display: flex;
       align-items: center;
       margin-bottom: 12px;
     }
+    // The Passenger / Flight details
     .flight-info {
+      // Content orientation
       display: flex;
       flex-direction: column;
       font-size: 12px;
+      // The Passenger / Flight details lettering
       p {
-        flex-grow: 1;
+        // Size
         min-width: 50%;
         height: 40px;
         padding: 2px 0px;
       }
+      // The lines under each detail
       hr {
+        // Size
         border: $c4 1px solid;
         margin-top: 5px;
       }
-
+      // The helper-text
       label {
         color: $c4;
       }
+      // The dot at the top right
       .dot {
         position: absolute;
         transform: translate(280px, 3px);
-
+        // Size
         width: 12px;
         height: 12px;
-
+        // Shape
         border-radius: 50%;
       }
+      // The structure of the Passenger / Flight details
       .info-wrapper {
+        // Content orientation
         display: flex;
         flex-direction: column;
+        // Size
         height: 100%;
+        // A wrapper to contain and orient the columns
         .info-columns {
+          // Content orientation
           display: flex;
+          // Size
           height: 80px;
           width: 100%;
           .col {
             width: 50%;
           }
+          // Applies a right margin to the left collumn
           .col:first-child {
             margin-right: 10px;
           }
+          // A single use wrapper to properly distruibute the 'Zone' and 'Seat' information
           .row {
+            // Content orientation
             display: flex;
             justify-content: space-between;
             p {
-              flex-grow: unset;
+              // Size
               min-width: calc(50% - 5px);
               width: 30px;
             }
@@ -98,188 +117,223 @@ h2 {
         }
       }
     }
-    .flight-form {
-      padding-top: 35px;
-    }
   }
+  // The bottom half of a ticket
   &-bottom {
+    // Content orientation
     display: flex;
+    // Size
     height: 50%;
     padding: 25px 20px 15px 20px;
     @include borderRadBottom;
-    color: white;
-
+    color: $c4;
+    // Small font
     p {
       font-size: 0.7em;
       letter-spacing: 1px;
     }
+
+    // Large font
+    h2 {
+      // Size
+      font-size: 2em;
+      line-height: 0.8em;
+      font-weight: lighter;
+      letter-spacing: 1px;
+    }
+    // The columns for the bottom of the ticket
     .bottom-col {
+      // Content orientation
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      width: 50%;
       text-align: center;
+      // Size
+      width: 50%;
+      // The column to the left
+      &:first-child {
+        margin-right: 10px;
+      }
+      // The background of the wrapper around the QR code
+      &:last-child .info-wrapper {
+        background: $c3;
+      }
+      // Wrapper containing the written information
       .info-wrapper {
+        // Content orientation
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
+        // Size
         height: 60%;
-
+        // The 'base' (downward arrow-ish) icon between departure airport and arrival airport
         .down-arrow {
-          height: 28px;
-          width: 26px;
-
-          clip-path: polygon(0% 0%, 100% 0, 100% 50%, 50% 100%, 0 50%);
-          background: $c3;
-          &::after {
-            content: "";
-            position: absolute;
-            margin-top: 2px;
-            margin-left: -11px;
-            height: calc(28px / 1.2);
-            width: calc(26px / 1.2);
-            clip-path: polygon(0% 0%, 100% 0, 100% 50%, 50% 100%, 0 50%);
-          }
+          // Mixin
+          @include downArrow;
         }
+        // The squares surrounding the departure / arrival information
         .square {
           position: absolute;
+          // Size
           height: 10px;
           width: 10px;
-
+          // The square at the top-left
           &.left {
             transform: translate(-62px);
-            background: $c5;
+            // The sizing is a bit different, since the other squares will involve some transformation
             height: 12px;
             width: 12px;
           }
+          // The square at the bottom-left
           &.bottom-left {
             transform: translate(-62px, 65px);
-            outline: 1px solid white;
-            &:after {
-              content: "";
-              position: absolute;
-              border-top: 1px solid white;
-              width: 14px;
-              transform: rotate(45deg);
-              transform-origin: -2px -6px;
-            }
           }
+          // The square at the bottom-left
           &.right {
             transform: translate(65px);
+          }
+          //  For both these squares...
+          &.bottom-left,
+          &.right {
             outline: 1px solid white;
             &:after {
-              content: "";
-              position: absolute;
-              border-top: 1px solid white;
-              width: 14px;
-              transform: rotate(45deg);
-              transform-origin: -2px -6px;
+              // the diagonal line passing through the square
+              @include diagLine;
             }
           }
         }
+        // The line between top-left and bottom-left squares
         .line {
-          position: absolute;
-          height: 2px;
-          width: 10px;
-          background: $c3;
-          transform: translate(-62px, 50px);
+          @include line;
         }
+        // The QR code
         .qr {
+          // Size
           margin-top: 10%;
-          width: 80%;
+          max-width: 80%;
+          max-height: 80%;
         }
       }
+      // The bottom-most wrapper of the ticket, containing both buttons
       .btn-wrapper {
         height: 20%;
+        // The button on the left
         .info-button {
           background: transparent;
+          // Size
           height: 40px;
           width: 40px;
-          float: left;
-          border-radius: 50%;
           border: 2px solid white;
+          float: left;
+          // Shape
+          border-radius: 50%;
+
           color: white;
         }
+        // The button on the right
         .purchase-button {
-          background: transparent;
+          // Size
           height: 40px;
           width: 100%;
-          float: left;
-          background: $c5;
           border: none;
           border-radius: 20px;
           font-family: $f1;
         }
       }
     }
-    .bottom-col:first-child {
-      margin-right: 10px;
-    }
-    .bottom-col:last-child .info-wrapper {
-      background: $c3;
-    }
   }
 
+  // Styles alterations for individual tickets
+
+  // The Alpha (blue) ticket
   &.Alpha {
-    p,
-    h1 {
-      color: $c1;
-    }
+    // The top half of the ticket
     .ticket-top {
+      p,
+      h1 {
+        color: $c1;
+      }
+      // Logo
       h1 {
         font-family: $f1;
       }
+      // Dot at the top-right
+      .dot {
+        background: $c5;
+      }
     }
-
+    // The bottom half of the ticket
     .ticket-bottom {
       background: $c1;
-
-      color: $c3;
+      // Small text
       p {
         color: $c3;
       }
-    }
-    .dot {
-      background: $c5;
-    }
-    .down-arrow::after {
-      background: $c1;
-    }
-    .purchase-button {
-      color: $c1;
+      // The square at the top-left
+      .square.left {
+        background: $c5;
+      }
+      // The 'base' (downward arrow-ish) icon between departure airport and arrival airport
+      .down-arrow::after {
+        background: $c1;
+      }
+      // The bottom-right 'Add to wallet' button
+      .purchase-button {
+        background: $c5;
+        color: $c1;
+      }
     }
   }
 
   &.OMEGA {
-    p,
-    h1 {
-      color: $c2;
-    }
+    // The top half of the ticket
     .ticket-top {
+      p,
+      h1 {
+        color: $c2;
+      }
+      // Logo
       h1 {
         font-family: $f3;
       }
+      // Dot at the top-right
+      .dot {
+        background: $c2;
+      }
     }
-
+    // The bottom half of the ticket
     .ticket-bottom {
       background: $c2;
+      // Small text
       p {
-        color: white;
+        color: $c3;
       }
+      // The square at the top-left
       .square.left {
         background: $c4;
       }
+      // The bottom-right 'Add to wallet' button
       .purchase-button {
         background: $c3;
         color: $c2;
       }
+
+      // The 'base' (downward arrow-ish) icon between departure airport and arrival airport
+      .down-arrow::after {
+        background: $c2;
+      }
     }
-    .dot {
-      background: $c2;
-    }
-    .down-arrow::after {
-      background: $c2;
-    }
+  }
+}
+
+// Media Queries
+@media (max-width: 900px) {
+  #App {
+    // Content orientation
+    flex-direction: column;
+    // Size
+    margin-top: 0px;
+    height: 200vh;
   }
 }

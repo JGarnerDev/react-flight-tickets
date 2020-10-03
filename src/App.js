@@ -1,7 +1,7 @@
 import React from "react";
+import QRCode from "qrcode.react";
+
 import "./styles/main.scss";
-import qrAlpha from "./assets/qr-Alpha.jpg";
-import qrOmega from "./assets/qr-OMEGA.jpg";
 
 const ticketStyles = ["Alpha", "OMEGA"];
 
@@ -34,9 +34,9 @@ const ticketInfo = {
   ],
 };
 
-const qr = {
-  Alpha: qrAlpha,
-  OMEGA: qrOmega,
+const QRColors = {
+  Alpha: ["#feebea", "#2955f4"],
+  OMEGA: ["#feebea", "#fa7065"],
 };
 
 function renderTickets() {
@@ -110,7 +110,12 @@ function renderTickets() {
           </div>
           <div className="bottom-col">
             <div className="info-wrapper">
-              <img src={qr[ticketStyle]} alt="" className="qr" />
+              <QRCode
+                value="https://undark.org/wp-content/uploads/2020/02/GettyImages-1199242002-1-scaled.jpg"
+                bgColor={QRColors[ticketStyle][0]}
+                fgColor={QRColors[ticketStyle][1]}
+                className="qr"
+              />
             </div>
             <div className="btn-wrapper">
               <button className="purchase-button">Add to wallet</button>
